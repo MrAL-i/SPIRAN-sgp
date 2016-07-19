@@ -9,20 +9,7 @@ update() {
   install_rocks
 }
 
-# Will install luarocks on THIS_DIR/.luarocks
-install_luarocks() {
-  git clone https://github.com/keplerproject/luarocks.git
-  cd luarocks
-  git checkout tags/v2.2.1 # Current stable
-
-  PREFIX="$THIS_DIR/.luarocks"
-
-  ./configure --prefix=$PREFIX --sysconfdir=$PREFIX/luarocks --force-config
-
-  RET=$?; if [ $RET -ne 0 ];
-    then echo "Error. Exiting."; exit $RET;
-  fi
-
+# Will install
   make build && make install
   RET=$?; if [ $RET -ne 0 ];
     then echo "Error. Exiting.";exit $RET;
