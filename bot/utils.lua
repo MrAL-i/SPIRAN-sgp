@@ -5,71 +5,13 @@ ltn12 = require "ltn12"
 
 serpent = (loadfile "./libs/serpent.lua")()
 feedparser = (loadfile "./libs/feedparser.lua")()
-json = (loadfile "./libs/JSON.lua")()
-mimetype = (loadfile "./libs/mimetype.lua")()
-redis = (loadfile "./libs/redis.lua")()
-JSON = (loadfile "./libs/dkjson.lua")()
-
-http.TIMEOUT = 10
-
-function get_receiver(msg)
-  if msg.to.type == 'user' then
-    return 'user#id'..msg.from.id
-  end
-  if msg.to.type == 'chat' then
-    return 'chat#id'..msg.to.id
-  end
-  if msg.to.type == 'encr_chat' then
-    return msg.to.print_name
-  end
-  if msg.to.type == 'channel' then
-    return 'channel#id'..msg.to.id
-  end
-end
-
-function is_chat_msg( msg )
-  if msg.to.type == 'chat' then
-    return true
-  end
-  return false
-end
-
-function string.random(length)
-   local str = "";
-   for i = 1, length do
-      math.random(97, 122)
-      str = str..string.char(math.random(97, 122));
-   end
-   return str;
-end
-
-function string.random(length)
-   local str = "";
-   for i = 1, length do
-      math.random(97, 122)
-      str = str..string.char(math.random(97, 122));
+json = (loadfilstring.char(math.random(97, 122));
    end
    return str;
 end
 
 function string:split(sep)
-  local sep, fields = sep or ":", {}
-  local pattern = string.format("([^%s]+)", sep)
-  self:gsub(pattern, function(c) fields[#fields+1] = c end)
-  return fields
-end
-
--- DEPRECATED
-function string.trim(s)
-  print("string.trim(s) is DEPRECATED use string:trim() instead")
-  return s:gsub("^%s*(.-)%s*$", "%1")
-end
-
--- Removes spaces
-function string:trim()
-  return self:gsub("^%s*(.-)%s*$", "%1")
-end
-
+  local sep, fields = sep or "
 function get_http_file_name(url, headers)
   -- Eg: foo.var
   local file_name = url:match("[^%w]+([%.%w]+)$")
@@ -82,19 +24,7 @@ function get_http_file_name(url, headers)
 
   local extension = nil
   if content_type then
-    extension = mimetype.get_mime_extension(content_type)
-  end
-  if extension then
-    file_name = file_name.."."..extension
-  end
-
-  local disposition = headers["content-disposition"]
-  if disposition then
-    -- attachment; filename=CodeCogsEqn.png
-    file_name = disposition:match('filename=([^;]+)') or file_name
-  end
-
-  return file_name
+    
 end
 
 --  Saves file to /tmp/. If file_name isn't provided,
