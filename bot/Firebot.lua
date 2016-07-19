@@ -243,24 +243,13 @@ function create_config( )
    "linkpv",
    "linkshorter",
    "msg_checks",
-   "nerkh",
-   "nerkharz",
-   "onservice",
    "owners",
    "plugins",
    "qr",
    "remmsg",
    "sendplug",
    "set",
-   "setabout",
-   "social",
-   "spam",
-   "supergroup",
-   "support",
-   "time",
-   "translate",
-   "voice",
-   "vote",
+   **&&&&&*
    "weather",
    "wiki",
    "me",
@@ -270,49 +259,15 @@ function create_config( )
    "music",
    "clash",
    "req",
-   "stats",
-   "writer",
-   "sms",
-   "setwlc",
-   "getwlc",
-   "addplug",
-   "pass",
-   "bye",
-   "toPhoto_By_Reply",
-   "toPhoto_Txt_img",
-   "toStciker_By_Reply",
-   "toSticker(Text_to_stick)",
-   "nano",
-   "filemanager",
-   "delplug",
-   "ls",
-   "dog",
-   "setcmd",
-   "ip",
-   "stmaker",
-   "gituser",
-   "anti_tag",
-   "lock_emoji",
-   "badwd",
-   "lock_audio",
-   "lock_gif",
-   "lock_join", 
-   "lock_share",
-   "lock_photo",
-   "lock_video",
-   "type",
-   "short",
-   "ingroup",
-   "Warn",
-   "mean"
+
 
     },
-    sudo_users = {208094932,126355654},--Sudo users
+    sudo_users = {208094932},--Sudo users
     moderation = {data = 'data/moderation.json'},
     about_text = [[ ]],
     help_text_realm = [[ Realm Commands:
 
-!creategroup [Name]
+!7 [Name]
 Create a group
 
 !createrealm [Name]
@@ -486,25 +441,7 @@ Alominabot SuperGroup Commands:
 اخراج و اضافه کردن یک فرد به لیست بلاک
 🔷!kick (آیدی فرد)
 اخراج کردن فردی توسط ایدی
-🔷!muteuser
-بی صدا کردن فرد توسط ریپلی یا یوزرنیم
-برای خارج کردن از بی صدا دوباره دستور را ارسال نمایید
-🔷!info
-دریافت اطلاعات خود
-🔷!save (متن) (موضوع)
-ذخیره یک متن
-🔷!get (موضوع)
-دریافت متن ذخیره شده
-🔷!id
-دریافت آیدی سوپرگروه یا یک فرد
-🔷!setowner
-تنظیم کردن مدیر اصلی سوپرگروه
-🔷!promote [یوزرنیم|آیدی] 
-اضافه کردن مدیر به سوپرگروه
-🔷!demote [یوزرنیم|آیدی]
-حذف کردن مدیر از سوپرگروه
-🔷!setname (نام جدید گروه)
-تنظیم نام گروه
+🔷!muteuse
 🔷!setphoto
 تنظیم عکس گروه
 🔷!setrules
@@ -595,29 +532,13 @@ function load_plugins()
     local ok, err =  pcall(function()
       local t = loadfile("plugins/"..v..'.lua')()
       plugins[v] = t
-    end)
-
-    if not ok then
-      print('\27[31mError loading plugin '..v..'\27[39m')
-	  print(tostring(io.popen("lua plugins/"..v..".lua"):read('*all')))
-      print('\27[31m'..err..'\27[39m')
     end
-
-  end
-end
-
--- custom add
-function load_data(filename)
-
-	local f = io.open(filename)
 	if not f then
 		return {}
 	end
 	local s = f:read('*all')
 	f:close()
-	local data = JSON.decode(s)
-
-	return data
+	loca	return data
 
 end
 
